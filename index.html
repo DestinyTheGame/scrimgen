@@ -9,83 +9,86 @@
   <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
 </head>
 <body>
-  <h1>The following maps are selected</h1>
-  <ol id="target"></ol>
-<script>
-  (function bootstrap(size = ['s', 'm', 'l'], modes=[], amount = 3) {
-    const target = document.getElementById('target');
+  <div class="container">
+    <h1>The following maps are selected</h1>
+    <ol id="target"></ol>
+  </div>
+  <noscript>This site requires JavaScript to be enabled in order to generate maps</noscript>
+  <script>
+    (function bootstrap(size = ['s', 'm', 'l'], modes=[], amount = 3) {
+      const target = document.getElementById('target');
 
-    /**
-     * Returns a random number between the given `min` and `max` values. We
-     * don't need crypto level randomness, we're generating a list of maps so
-     * some bias in RNG is not going to matter.
-     *
-     * @param {Number} min The minimum value.
-     * @param {Number} max The maximum value.
-     * @returns {Number} The generated random number.
-     * @public
-     */
-    function random(min, max) {
-      return Math.floor(Math.random() * (max - min + 1)) + min
-    }
+      /**
+       * Returns a random number between the given `min` and `max` values. We
+       * don't need crypto level randomness, we're generating a list of maps so
+       * some bias in RNG is not going to matter.
+       *
+       * @param {Number} min The minimum value.
+       * @param {Number} max The maximum value.
+       * @returns {Number} The generated random number.
+       * @public
+       */
+      function random(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min
+      }
 
-    //
-    // Current selection of maps that are available in the game.
-    //
-    // - `name` Human readable name of the map.
-    // - `size` indicates the physical size of map, in t-shirt size.
-    // - `modes` List of modes this map can be used in.
-    //
-    const maps = [
-      { name: 'Altar of Flame', size: 'm', modes: ['clash'] },
-      { name: 'Anomaly', size: 's', modes: ['clash'] },
-      { name: 'Bannerfall', size: 'm', modes: ['clash'] },
-      { name: 'Burnout', size: 's', modes: ['clash'] },
-      { name: 'Cauldron', size: 's', modes: ['clash'] },
-      { name: 'Convergence', size: 'm', modes: ['clash'] },
-      { name: 'Dead Cliffs', size: 's', modes: ['clash'] },
-      { name: 'Endless Vale', size: 's', modes: ['clash'] },
-      { name: 'Exodus Blue', size: 's', modes: ['clash'] },
-      { name: 'Fortress', size: 'l', modes: ['clash'] },
-      { name: 'Fragment', size: 'l', modes: ['clash'] },
-      { name: 'Javelin-4', size: 's', modes: ['clash'] },
-      { name: 'Midtown', size: 'l', modes: ['clash'] },
-      { name: 'Pacifica', size: 'm', modes: ['clash'] },
-      { name: 'Radiant Cliffs', size: 'l', modes: ['clash'] },
-      { name: 'Rusted Lands', size: 'm', modes: ['clash'] },
-      { name: 'Twilight Gap', size: 'm', modes: ['clash'] },
-      { name: 'Widow\'s Court', size: 'l', modes: ['clash'] },
-      { name: 'Wormhaven', size: 'm', modes: ['clash'] }
-    ];
+      //
+      // Current selection of maps that are available in the game.
+      //
+      // - `name` Human readable name of the map.
+      // - `size` indicates the physical size of map, in t-shirt size.
+      // - `modes` List of modes this map can be used in.
+      //
+      const maps = [
+        { name: 'Altar of Flame', size: 'm', modes: ['clash'] },
+        { name: 'Anomaly', size: 's', modes: ['clash'] },
+        { name: 'Bannerfall', size: 'm', modes: ['clash'] },
+        { name: 'Burnout', size: 's', modes: ['clash'] },
+        { name: 'Cauldron', size: 's', modes: ['clash'] },
+        { name: 'Convergence', size: 'm', modes: ['clash'] },
+        { name: 'Dead Cliffs', size: 's', modes: ['clash'] },
+        { name: 'Endless Vale', size: 's', modes: ['clash'] },
+        { name: 'Exodus Blue', size: 's', modes: ['clash'] },
+        { name: 'Fortress', size: 'l', modes: ['clash'] },
+        { name: 'Fragment', size: 'l', modes: ['clash'] },
+        { name: 'Javelin-4', size: 's', modes: ['clash'] },
+        { name: 'Midtown', size: 'l', modes: ['clash'] },
+        { name: 'Pacifica', size: 'm', modes: ['clash'] },
+        { name: 'Radiant Cliffs', size: 'l', modes: ['clash'] },
+        { name: 'Rusted Lands', size: 'm', modes: ['clash'] },
+        { name: 'Twilight Gap', size: 'm', modes: ['clash'] },
+        { name: 'Widow\'s Court', size: 'l', modes: ['clash'] },
+        { name: 'Wormhaven', size: 'm', modes: ['clash'] }
+      ];
 
-    //
-    // Allow for drill down of the maps based on size and modes that people
-    // want to use.
-    //
-    const available = maps.filter(function filter(map) {
-      if (!size.includes(map.size)) return false;
-      if (!modes.length) return true;
+      //
+      // Allow for drill down of the maps based on size and modes that people
+      // want to use.
+      //
+      const available = maps.filter(function filter(map) {
+        if (!size.includes(map.size)) return false;
+        if (!modes.length) return true;
 
-      return map.modes.some(function some(mode) {
-        return modes.include(mode);
+        return map.modes.some(function some(mode) {
+          return modes.include(mode);
+        });
       });
-    });
 
-    const selection = [];
-    for (let i = 0; i < amount; i++) {
-      const index = random(0, available.length - 1);
+      const selection = [];
+      for (let i = 0; i < amount; i++) {
+        const index = random(0, available.length - 1);
 
-      //
-      // We're splicing the map array to ensure that no duplicate maps are
-      // being pulled from our
-      //
-      selection.push(...available.splice(index, 1));
-    }
+        //
+        // We're splicing the map array to ensure that no duplicate maps are
+        // being pulled from our
+        //
+        selection.push(...available.splice(index, 1));
+      }
 
-    target.innerHTML = selection.map(function format(map) {
-      return `<li><span class="chip">${map.name}</span></li>`;
-    }).join('');
-  }());
-</script>
+      target.innerHTML = selection.map(function format(map) {
+        return `<li><span class="chip">${map.name}</span></li>`;
+      }).join('');
+    }());
+  </script>
 </body>
 </html>
