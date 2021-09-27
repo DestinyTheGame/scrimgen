@@ -69,7 +69,7 @@ function randomizeMaps(modes = []) {
         if (!selection.length) return target.innerHTML = `
           <div class="empty">
             <div class="empty-icon">
-              <i class="icon icon-emoji"></i>
+              <span class="icon icon-emoji"></span>
             </div>
             <p class="empty-title h5">Congratulations</p>
             <p class="empty-subtitle">You've successfully selected no maps, you muppet</p>
