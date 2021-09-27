@@ -1,0 +1,7 @@
+#advanced {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    border-top: 1px solid #F1F1F1;
+}
