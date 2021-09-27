@@ -26,21 +26,22 @@
   //
   const maps = [
     {name: 'Altar of Flame', size: 'm', modes: ['clash']},
-    {name: 'Anomaly', size: 's', modes: ['clash']},
     {name: 'Bannerfall', size: 'm', modes: ['clash']},
-    {name: 'Burnout', size: 's', modes: ['clash']},
     {name: 'Cauldron', size: 's', modes: ['clash']},
     {name: 'Convergence', size: 'm', modes: ['clash']},
-    {name: 'Dead Cliffs', size: 's', modes: ['clash']},
+    {name: 'Distant Shore', size: 'm', modes: ['clash']},
     {name: 'Endless Vale', size: 's', modes: ['clash']},
     {name: 'Exodus Blue', size: 's', modes: ['clash']},
-    {name: 'Fortress', size: 'l', modes: ['clash']},
     {name: 'Fragment', size: 'l', modes: ['clash']},
     {name: 'Javelin-4', size: 's', modes: ['clash']},
     {name: 'Midtown', size: 'l', modes: ['clash']},
     {name: 'Pacifica', size: 'm', modes: ['clash']},
     {name: 'Radiant Cliffs', size: 'l', modes: ['clash']},
     {name: 'Rusted Lands', size: 'm', modes: ['clash']},
+    {name: 'The Anomaly', size: 's', modes: ['clash']},
+    {name: 'The Burnout', size: 's', modes: ['clash']},
+    {name: 'The Dead Cliffs', size: 's', modes: ['clash']},
+    {name: 'The Fortress', size: 'l', modes: ['clash']},
     {name: 'Twilight Gap', size: 'm', modes: ['clash']},
     {name: 'Widow\'s Court', size: 'l', modes: ['clash']},
     {name: 'Wormhaven', size: 'm', modes: ['clash']}
@@ -68,19 +69,24 @@
     shuffleArray(available);
     const selection = available.slice(0, amount);
 
-    if (!selection.length) return target.innerHTML = `
-          <div class="empty">
-            <div class="empty-icon">
-              <span class="icon icon-emoji"></span>
-            </div>
-            <p class="empty-title h5">Congratulations</p>
-            <p class="empty-subtitle">You've successfully selected no maps, you muppet</p>
+    if (!selection.length) {
+      target.innerHTML =
+        `<div class="empty">
+          <div class="empty-icon">
+            <span class="icon icon-emoji"></span>
           </div>
-        `;
+        <p class="empty-title h5">Congratulations</p>
+        <p class="empty-subtitle">You've successfully selected no maps, you muppet</p>
+        </div>`;
+      return;
+    }
 
-    target.innerHTML = '<ol>' + selection.map(function format(map) {
-      return `<li><span class="chip">${map.name}</span></li>`;
-    }).join('') + '</ol>';
+    target.innerHTML = selection.map((entry, idx) => {
+      return `<div class="img-container">
+                <img src="images/maps/${entry.name}.jpg" alt=${entry.name} class="map-img"/>
+                <div class="map-name">${idx + 1} - ${entry.name}</div>
+              </div>`
+    }).join('');
   }
 
 
@@ -92,5 +98,9 @@
   });
 
   document.getElementById('again').addEventListener('click', render);
+  document.forms[0].addEventListener('submit', function (event) {
+    event.preventDefault();
+    render();
+  })
   return render();
 })();

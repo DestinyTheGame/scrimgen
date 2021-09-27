@@ -1,7 +1,63 @@
+html {
+    height: 100%;
+}
+
+body {
+    background: radial-gradient(circle at center, #2E7FF4, #330B88) no-repeat;
+    height: 100%;
+    margin: 0;
+}
+
+.header {
+    color: white;
+    padding: 5px;
+    margin-bottom: 0;
+}
+
+#target {
+    display: flex;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.img-container {
+    position: relative;
+    margin: 10px;
+}
+
+.map-img {
+    width: 100%;
+}
+
+.map-name {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 10px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5)
+}
+
 #advanced {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100vw;
     border-top: 1px solid #F1F1F1;
+    background: white;
 }
+
+@media (max-width: 750px) {
+
+    .header {
+        color: white;
+        padding: 5px;
+        margin-bottom: 0;
+        font-size: smaller;
+    }
+
+    #target {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+}
+
