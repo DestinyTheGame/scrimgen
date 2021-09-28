@@ -1,16 +1,14 @@
-html {
-    height: 100%;
+html, body {
+    min-height: 100%;
 }
 
 body {
     background: radial-gradient(circle at center, #2E7FF4, #330B88) no-repeat;
-    height: 100%;
-    margin: 0;
 }
 
 .header {
     color: white;
-    padding: 5px;
+    padding: 0.25rem;
     margin-bottom: 0;
 }
 
@@ -21,7 +19,8 @@ body {
 
 .img-container {
     position: relative;
-    margin: 10px;
+    margin: 0.5rem;
+    max-width: 50%;
 }
 
 .map-img {
@@ -32,7 +31,7 @@ body {
     position: absolute;
     top: 0;
     width: 100%;
-    padding: 10px;
+    padding: 0.5rem;
     color: white;
     background-color: rgba(0, 0, 0, 0.5)
 }
@@ -50,7 +49,7 @@ body {
 
     .header {
         color: white;
-        padding: 5px;
+        padding: 0.25rem;
         margin-bottom: 0;
         font-size: smaller;
     }
