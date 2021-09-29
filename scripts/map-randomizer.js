@@ -85,7 +85,7 @@
     target.innerHTML = selection.map((entry, idx) => {
       return `<div class="img-container">
                 <img src="images/maps/${entry.image}" alt=${entry.name} class="img-responsive" aria-hidden="true"/>
-                <div class="map-name">${idx + 1} | ${entry.name}</div>
+                <div class="img-text-header">${idx + 1} | ${entry.name}</div>
               </div>`
     }).join('');
   }

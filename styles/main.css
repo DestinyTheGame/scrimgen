@@ -20,20 +20,17 @@ body {
 .img-container {
     position: relative;
     margin: 0.5rem;
-    max-width: 50%;
+    max-width: 75%;
 }
 
-.map-img {
-    width: 100%;
-}
-
-.map-name {
+.img-text-header {
     position: absolute;
     top: 0;
     width: 100%;
     padding: 0.5rem;
     color: white;
-    background-color: rgba(0, 0, 0, 0.5)
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 2rem;
 }
 
 #advanced {
@@ -45,7 +42,7 @@ body {
     background: white;
 }
 
-@media (max-width: 750px) {
+@media (max-width: 500px) {
 
     .header {
         color: white;
@@ -55,8 +52,14 @@ body {
     }
 
     #target {
-        display: grid;
-        grid-template-columns: 1fr;
+        display: list-item;
+        width: 250px;  /* Half of media max width */
+    }
+
+    .img-responsive{
+        object-fit: cover;
+        height: 2rem;
+        width: 100%;
     }
 }
 
