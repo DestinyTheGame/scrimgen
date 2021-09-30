@@ -1,7 +1,6 @@
 (function randomizeMaps(modes = []) {
-
   /**
-   *  Randomize array in-place using Durstenfeld shuffle algorithm.
+   * Randomize array in-place using Durstenfeld shuffle algorithm.
    *
    * @param {array} array The array to shuffle.
    * @private
@@ -49,11 +48,12 @@
   /**
    * Render the current map selection based on the pre-defined filters.
    *
-   * @param {Event} [event] - An optional Event argument for handling event listeners
+   * @param {Event} [event] An optional Event argument for handling event listeners.
    * @private
    */
   function render(event = null) {
-    if (event !== null) event.preventDefault();
+    if (event !== null && event.preventDefault) event.preventDefault();
+
     const size = Array.from(document.querySelectorAll('input[name="size"]:checked')).map((elem) => elem.value);
     const amount = document.getElementById('amount').value;
 
@@ -99,6 +99,7 @@
   });
 
   document.getElementById('again').addEventListener('click', render);
-  document.forms[0].addEventListener('submit', render)
+  document.forms[0].addEventListener('submit', render);
+
   return render();
 })();
