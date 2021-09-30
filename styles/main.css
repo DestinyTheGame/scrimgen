@@ -1,7 +1,66 @@
+body {
+    background: radial-gradient(circle at center, #2E7FF4, #330B88) no-repeat;
+    min-height: 100vh;
+}
+
+#main-container {
+    overflow: hidden;
+}
+
+#header-text {
+    color: white;
+    padding-left: 0.25rem;
+}
+
+#target {
+    display: flex;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.img-container {
+    position: relative;
+    margin: 0.5rem;
+    max-width: 50%;
+}
+
+.img-text-header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 0.5rem;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 2rem;
+}
+
 #advanced {
     position: fixed;
     bottom: 0;
     left: 0;
-    width: 100vw;
+    width: 100%;
     border-top: 1px solid #F1F1F1;
+    background: white;
+}
+
+@media (max-width: 500px) {
+
+    #header-text {
+        padding-top: 0.25rem;
+        font-size: larger;
+    }
+
+    #target {
+        display: list-item;
+        width: 20rem; /* Just a few chars longer than the longest map name + prefix */
+    }
+
+    .img-responsive {
+        object-fit: cover;
+        height: 2rem;
+        width: 100%;
+    }
+
+    .form-input {
+        max-width: 90%;
+    }
 }

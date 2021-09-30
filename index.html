@@ -11,16 +11,16 @@
   <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-<div class="container">
-  <h2>
+<div id="main-container">
+  <h2 id="header-text">
     The following maps are selected
 
     <button class="btn btn-link btn-action float-right" id="again">
       <span class="icon icon-refresh"></span>
     </button>
   </h2>
-  <div id="target"></div>
 
+  <div id="target"></div>
 
   <details class="accordion" id="advanced">
     <summary class="accordion-header c-hand">
@@ -28,7 +28,7 @@
       <strong>Advanced Settings</strong>
     </summary>
     <form class="accordion-body" action="#">
-      <div class="column col-6 col-xs-12">
+      <div class="column col-3 col-xs-12">
         <div class="form-group">
           <label class="form-label" for="amount">How many maps</label>
           <input class="form-input" id="amount" type="number" value="3" min="1" max="4" name="amount">
@@ -44,7 +44,7 @@
         </div>
 
         <div class="form-group">
-          <label class="form-switch tooltip" data-tooltip="E.g. Pasifica, Rusted Lands">
+          <label class="form-switch tooltip" data-tooltip="E.g. Pacifica, Rusted Lands">
             <input type="checkbox" value="m" name="size" checked>
             <span class="form-icon"></span> Medium
           </label>
