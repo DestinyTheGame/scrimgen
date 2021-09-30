@@ -9,7 +9,7 @@ body {
 
 #header-text {
     color: white;
-    margin-left: 0.25rem;
+    padding-left: 0.25rem;
 }
 
 #target {
@@ -44,16 +44,14 @@ body {
 
 @media (max-width: 500px) {
 
-    .header {
-        color: white;
-        padding: 0.25rem;
-        margin-bottom: 0;
-        font-size: smaller;
+    #header-text {
+        padding-top: 0.25rem;
+        font-size: larger;
     }
 
     #target {
         display: list-item;
-        width: 20rem; /* Half of media max width */
+        width: 20rem; /* Just a few chars longer than the longest map name + prefix */
     }
 
     .img-responsive {
